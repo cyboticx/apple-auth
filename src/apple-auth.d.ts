@@ -9,7 +9,7 @@ declare module "apple-auth" {
   export interface AppleClientSecret{
     _config: AppleAuthConfig,
     _privateKeyLocation: string,
-    _privateKeyMethod: string
+    _privateKeyMethod: 'file' | 'text'
 
     generate(): Promise<string>;
   }
@@ -29,7 +29,7 @@ declare module "apple-auth" {
     debug: boolean | undefined;
   }
   export default class AppleAuth {
-    constructor(config: AppleAuthConfig, privateKeyLocation: string, privateKeyMethod: string, customConfig?: CustomConfig)
+    constructor(config: AppleAuthConfig, privateKeyLocation: string, privateKeyMethod: 'file' | 'text', customConfig?: CustomConfig)
     public _state: string;
     _tokenGenerator: AppleClientSecret;
     loginURL(): string;
